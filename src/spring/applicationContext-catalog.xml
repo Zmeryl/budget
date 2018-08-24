@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<!-- dao -->
+	<bean name="catalogDAO" class="com.leonyip.budget.dao.catalog.B_BaseCatalogDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="priceHumanDAO" class="com.leonyip.budget.dao.catalog.B_BasePriceHumanDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="priceOtherDAO" class="com.leonyip.budget.dao.catalog.B_BasePriceOtherDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="priceResDAO" class="com.leonyip.budget.dao.catalog.B_BasePriceResDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+
+	
+	<!-- service -->
+	<bean name="catalogService" class="com.leonyip.budget.service.catalog.B_BaseCatalogService">
+		<property name="catalogDAO" ref="catalogDAO"/>
+	</bean>
+	
+	<bean name="priceHumanService" class="com.leonyip.budget.service.catalog.B_BasePriceHumanService">
+		<property name="priceHumanDAO" ref="priceHumanDAO"/>	
+	</bean>
+	
+	<bean name="priceOtherService" class="com.leonyip.budget.service.catalog.B_BasePriceOtherService">
+		<property name="priceOtherDAO" ref="priceOtherDAO"/>
+	</bean>
+	
+	<bean name="priceResService" class="com.leonyip.budget.service.catalog.B_BasePriceResService">
+		<property name="priceResDAO" ref="priceResDAO"/>
+	</bean>
+
+	
+	<!-- action -->
+  	<bean id="catalogAction" class="com.leonyip.budget.web.action.catalog.B_BaseCatalogAction" scope="prototype">
+		<property name="catalogService" ref="catalogService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+		<property name="priceResService" ref="priceResService"/>
+	</bean>
+	
+  	<bean id="humanPriceAction" class="com.leonyip.budget.web.action.catalog.B_BasePriceHumanAction" scope="prototype">
+		<property name="catalogService" ref="catalogService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+		<property name="priceResService" ref="priceResService"/>	
+		<property name="deptRoleService" ref="deptRoleService"/>
+		<property name="userService" ref="userService"/>
+	</bean> 
+	
+  	<bean id="resPriceAction" class="com.leonyip.budget.web.action.catalog.B_BasePriceResAction" scope="prototype">
+		<property name="catalogService" ref="catalogService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+		<property name="priceResService" ref="priceResService"/>		
+	</bean>
+	
+  	<bean id="otherPriceAction" class="com.leonyip.budget.web.action.catalog.B_BasePriceOtherAction" scope="prototype">
+		<property name="catalogService" ref="catalogService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+		<property name="priceResService" ref="priceResService"/>		
+	</bean>	
+</beans>

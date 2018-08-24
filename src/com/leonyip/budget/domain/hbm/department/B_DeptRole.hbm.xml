@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.department">
+	<class name="B_DeptRole" table="B_DeptRole" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="deptRoleId" column="DeptRoleId">
+			<generator class="native"/>
+		</id>
+		
+<!--		<property name="deptId" column="DeptId"/>-->
+		<many-to-one name="dept" class="com.leonyip.budget.domain.department.B_Department" >
+			<column name="DeptId"></column>
+		</many-to-one>
+		
+		<property name="deptRoleName" column="DeptRoleName"/>
+		
+		<property name="deptRolePrice" column="DeptRolePrice"/>
+		
+		<property name="deptRoleInfo" column="DeptRoleInfo"/>
+		
+	</class>
+</hibernate-mapping>
+

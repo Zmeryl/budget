@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="department" extends="struts-default" namespace="/department">
+		
+		<!-- department -->
+		<action name="departmentAction" class="departmentAction">
+			<result name="success" type="dispatcher">department_list.jsp</result>
+			<result name="showAddDepartmentJSP" type="dispatcher">department_add.jsp</result>
+			<result name="addDepartment" type="chain">departmentAction</result>
+			<result name="showEditDepartmentJSP" type="dispatcher">department_edit.jsp</result>
+			<result name="updateDepartment" type="chain">departmentAction</result>
+			<result name="deleteDepartment" type="redirectAction">departmentAction</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewDepartment" type="dispatcher">department_view.jsp</result>
+		</action>
+		
+		<!-- department Role -->
+		<action name="deptRoleAction" class="com.leonyip.budget.web.action.department.B_DeptRoleAction">
+			<result name="success" type="chain">getDeptList</result>
+			<result name="addDepartmentRole" type="chain">deptRoleAction</result>
+			<result name="updateDeptRole" type="chain">deptRoleAction</result>
+			<result name="getDeptRole" type="chain" >showEditDeptRoleJSP</result>
+			<result name="deleteDeptRole" type="chain">deptRoleAction</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewDeptRole" type="dispatcher">deptRole_view.jsp</result>
+		</action>
+		
+		<action name="getDeptList" class="com.leonyip.budget.web.action.department.B_DepartmentAction" method="getDeptList">
+			<result name="getDeptList" type="dispatcher">deptRole_list.jsp</result>
+		</action>
+		
+		<action name="showAddDeptRoleJSP" class="com.leonyip.budget.web.action.department.B_DepartmentAction" method="getDeptList">
+			<result name="getDeptList" type="dispatcher">deptRole_add.jsp</result>
+		</action>
+		
+		<action name="showEditDeptRoleJSP" class="com.leonyip.budget.web.action.department.B_DepartmentAction" method="getDeptList">
+			<result name="getDeptList" type="dispatcher">deptRole_edit.jsp</result>
+		</action>
+	</package>
+</struts>

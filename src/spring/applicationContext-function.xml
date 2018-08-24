@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- dao -->
+	<bean name="roleDAO" class="com.leonyip.budget.dao.function.S_SysRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+
+	<bean name="functionDAO" class="com.leonyip.budget.dao.function.S_SysFunctionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="roleFunDAO" class="com.leonyip.budget.dao.function.S_SysRoleFunDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>		
+		
+	<!-- service -->
+	<bean name="roleService" class="com.leonyip.budget.service.function.S_SysRoleService">
+		<property name="roleDAO">
+			<ref bean="roleDAO"/>
+		</property>
+	</bean>
+	
+	<bean name="functionService" class="com.leonyip.budget.service.function.S_SysFunctionService">
+		<property name="functionDAO">
+			<ref bean="functionDAO"/>
+		</property>
+	</bean>	
+	
+	<bean name="roleFunService" class="com.leonyip.budget.service.function.S_SysRoleFunService">
+		<property name="roleFunDAO">
+			<ref bean="roleFunDAO"/>
+		</property>
+	</bean>	
+	
+	
+	<!-- action -->
+  	<bean id="roleAction" class="com.leonyip.budget.web.action.function.S_SysRoleAction" scope="prototype">
+		<property name="roleService" ref="roleService"/>
+		<property name="userService" ref="userService"/>
+	</bean>	
+	
+  	<bean id="getRoleFunList" class="com.leonyip.budget.web.action.function.S_SysRoleFunAction" scope="prototype">
+		<property name="roleService" ref="roleService"/>
+		<property name="functionService" ref="functionService"/>
+		<property name="roleFunService" ref="roleFunService"/>
+	</bean>	
+	 	  
+  	<bean id="showEditRoleFun2" class="com.leonyip.budget.web.action.function.S_SysFunctionAction" scope="prototype">
+		<property name="functionService" ref="functionService"/>
+	</bean>		 	  
+</beans>

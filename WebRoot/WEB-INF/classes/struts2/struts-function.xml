@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="function" extends="struts-default" namespace="/function">
+		
+		<!-- function -->
+		<action name="functionAction" class="com.leonyip.budget.web.action.function.S_SysFunctionAction">
+			<result name="success" type="dispatcher">function_list.jsp</result>
+			<result name="addFunction" type="chain">functionAction</result>
+			<result name="updateFunction" type="chain">functionAction</result>
+			<result name="deleteFunction" type="chain">functionAction</result>
+			<result name="showEditFunctionJSP" type="dispatcher">function_edit.jsp</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewFunction" type="dispatcher">function_view.jsp</result>
+		</action>
+		
+		<action name="showAddFunctionJSP" class="com.opensymphony.xwork2.ActionSupport">
+			<result name="success" type="dispatcher">function_add.jsp</result>
+		</action>
+
+		<!-- role -->
+		<action name="roleAction" class="roleAction">
+			<result name="success" type="dispatcher">role_list.jsp</result>
+			<result name="addRole" type="chain">roleAction</result>
+			<result name="updateRole" type="chain">roleAction</result>
+			<result name="deleteRole" type="chain">roleAction</result>
+			<result name="showEditRoleJSP" type="dispatcher">role_edit.jsp</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewRole" type="dispatcher">role_view.jsp</result>
+			<result name="showAddRoleJSP" type="dispatcher">role_add.jsp</result>
+			<!-- 打开分配权限页面 -->
+			<result name="showEditRoleJSP" type="chain">getRoleFunList</result>
+		</action>
+		
+
+		<action name="getRoleFunList" class="getRoleFunList" method="getRoleFunList">
+			<result name="getRoleFunList" type="chain">showEditRoleFun2</result>
+		</action>	
+		
+		<action name="showEditRoleFun2" class="com.leonyip.budget.web.action.function.S_SysFunctionAction">
+			<result name="success" type="dispatcher">editRule.jsp</result>
+		</action>
+		
+		<!-- 分配角色的权限 -->
+		<action name="doRoleFunction" class="com.leonyip.budget.web.action.function.S_SysRoleFunAction">
+			<result name="success" type="dispatcher">closeEditRule.jsp</result>
+		</action>		
+	</package>
+</struts>

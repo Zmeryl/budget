@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.project">
+	<class name="M_Project" table="M_Project" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="prjId" column="PrjId">
+			<generator class="native"/>
+		</id> 
+		
+		<property name="prjName" column="PrjName"/>
+		
+<!--		<property name="deptId" column="DeptId"/>-->
+		<many-to-one name="dept" class="com.leonyip.budget.domain.department.B_Department" >
+			<column name="DeptId"></column>
+		</many-to-one>
+		
+		<property name="deptName" column="DeptName"/>
+		
+<!--		<property name="managerId" column="ManagerId"/>-->
+		<many-to-one name="manager" class="com.leonyip.budget.domain.user.B_User" >
+			<column name="ManagerId"></column>
+		</many-to-one>
+		
+		<property name="managerName" column="ManagerName"/>
+		
+		<property name="beginDatePlan" column="BeginDatePlan"/>
+		
+		<property name="endDatePlan" column="EndDatePlan"/>
+		
+		<property name="sumPricePlan" column="SumPricePlan" />
+		
+		<property name="beginDateFact" column="BeginDateFact"/>
+		
+		<property name="endDateFact" column="EndDateFact"/>
+		
+		<property name="sumPriceFact" column="SumPriceFact"/>
+		
+		<property name="prjDesc" column="PrjDesc"/>
+		
+		<bag name="milestoneList" inverse="true" cascade="delete" order-by="MilestoneId">
+			<key column="PrjId"/>
+			<one-to-many class="M_Milestone"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>
+

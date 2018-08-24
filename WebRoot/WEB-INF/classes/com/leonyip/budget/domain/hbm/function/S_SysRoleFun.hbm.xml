@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.function">
+	<class name="S_SysRoleFun" table="S_SysRoleFun" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="refId" column="RefId">
+			<generator class="native"/>
+		</id>
+		
+<!--		<property name="funId" column="FunId"/>-->
+		<many-to-one name="sysFunction" class="com.leonyip.budget.domain.function.S_SysFunction" >
+			<column name="FunId"></column>
+		</many-to-one>
+		
+		<property name="funName" column="FunName"/>
+		
+<!--		<property name="sysRoleId" column="SysRoleId"/>-->
+		<many-to-one name="sysRole" class="com.leonyip.budget.domain.function.S_SysRole" >
+			<column name="SysRoleId"></column>
+		</many-to-one>
+		
+		<property name="sysRoleName" column="SysRoleName"/>
+		
+		<property name="createDate" column="CreateDate"/>
+		
+		<property name="updateDate" column="UpdateDate"/>
+		
+		<!-- 
+		<bag name="sysRoleFunList" inverse="true" cascade="delete" order-by="RefId">
+			<key column="FunId"/>
+			<one-to-many class="S_SysRoleFun"/>
+		</bag>
+		 -->
+	</class>
+</hibernate-mapping>

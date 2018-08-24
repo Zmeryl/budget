@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.catalog">
+	<class name="B_BaseCatalog" table="B_BaseCatalog" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="cataId" column="CataId">
+			<generator class="native"/>
+		</id> 
+		
+		<property name="superId" column="SuperId"/>
+		
+		<property name="cataName" column="CataName"/>
+		
+		<property name="cataType" column="CataType"/>
+		
+		<bag name="humanPriceList" inverse="true" cascade="delete" order-by="PriceId">
+			<key column="CataId"/>
+			<one-to-many class="B_BasePriceHuman"/>
+		</bag>
+		
+		<bag name="resPriceList" inverse="true" cascade="delete" order-by="PriceId">
+			<key column="CataId"/>
+			<one-to-many class="B_BasePriceRes"/>
+		</bag>
+		
+		<bag name="otherPriceList" inverse="true" cascade="delete" order-by="PriceId">
+			<key column="CataId"/>
+			<one-to-many class="B_BasePriceOther"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

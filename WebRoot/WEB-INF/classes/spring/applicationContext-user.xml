@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+  
+	<!-- DAO -->
+	<bean id="userDAO" class="com.leonyip.budget.dao.user.B_UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="userDetailDAO" class="com.leonyip.budget.dao.user.B_UserDetailDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	
+    <!-- Service -->
+    <bean name="userService" class="com.leonyip.budget.service.user.B_UserService">
+      <property name="userDAO" ref="userDAO"/>
+    </bean>
+    
+    <bean name="userDetailService" class="com.leonyip.budget.service.user.B_UserDetailService">
+      <property name="userDetailDAO" ref="userDetailDAO"/>
+    </bean>
+  
+  
+    <!-- action -->
+  	<bean id="loginController" class="com.leonyip.budget.web.action.user.B_LoginControllerAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+  	<bean id="userAction" class="com.leonyip.budget.web.action.user.B_UserAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+		<property name="userDetailService" ref="userDetailService"/>
+		<property name="roleService" ref="roleService"/>
+		<property name="deptRoleService" ref="deptRoleService"/>
+		<property name="departmentService" ref="departmentService"/>
+	</bean>
+	
+  	<bean id="userDetailAction" class="com.leonyip.budget.web.action.user.B_UserDetailAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+		<property name="userDetailService" ref="userDetailService"/>
+	</bean>	
+</beans>

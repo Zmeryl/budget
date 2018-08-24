@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="catalog" namespace="/catalog" extends="struts-default">
+
+		<!-- catalog -->
+		<action name="catalogAction" class="catalogAction">
+			<result name="success" type="dispatcher">baseCatalog_list.jsp</result>
+			<result name="showAddCatalogJSP" type="dispatcher">baseCatalog_add.jsp</result>
+			<result name="addCatalog" type="chain">catalogAction</result>
+			<result name="showEditCatalogJSP" type="dispatcher">baseCatalog_edit.jsp</result>
+			<result name="updateCatalog" type="chain">catalogAction</result>
+			<result name="deleteCatalog" type="chain">catalogAction</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewCatalog" type="dispatcher">baseCatalog_view.jsp</result>
+		</action>
+		
+		<!-- human price -->
+		<action name="humanPriceAction" class="humanPriceAction">
+			<result name="success" type="dispatcher">humanPrice_list.jsp</result>
+			<result name="showAddPriceHumanJSP" type="dispatcher">humanPrice_add.jsp</result>
+			<result name="addPriceHuman" type="chain">humanPriceAction</result>
+			<result name="showEditPriceHumanJSP" type="dispatcher">humanPrice_edit.jsp</result>
+			<result name="updatePriceHuman" type="chain">humanPriceAction</result>
+			<result name="deletePriceHuman" type="chain">humanPriceAction</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewPriceHuman" type="dispatcher">humanPrice_view.jsp</result>
+		</action>
+		
+		<!-- res price -->
+		<action name="resPriceAction" class="resPriceAction">
+			<result name="success" type="dispatcher">resPrice_list.jsp</result>
+			<result name="showAddPriceResJSP" type="dispatcher">resPrice_add.jsp</result>
+			<result name="addPriceRes" type="chain">resPriceAction</result>
+			<result name="showEditPriceResJSP" type="dispatcher">resPrice_edit.jsp</result>
+			<result name="updatePriceRes" type="chain">resPriceAction</result>
+			<result name="deletePriceRes" type="chain">resPriceAction</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewPriceRes" type="dispatcher">resPrice_view.jsp</result>
+		</action>
+		
+		<!-- other price -->
+		<action name="otherPriceAction" class="otherPriceAction">
+			<result name="success" type="dispatcher">otherPrice_list.jsp</result>
+			<result name="showAddPriceOtherJSP" type="dispatcher">otherPrice_add.jsp</result>
+			<result name="addPriceOther" type="chain">otherPriceAction</result>
+			<result name="showEditPriceOtherJSP" type="dispatcher">otherPrice_edit.jsp</result>
+			<result name="updatePriceOther" type="chain">otherPriceAction</result>
+			<result name="deletePriceOther" type="chain">otherPriceAction</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewPriceOther" type="dispatcher">otherPrice_view.jsp</result>
+		</action>
+		
+		<!-- user -->
+		<action name="chooseUserAction" class="com.leonyip.budget.web.action.user.B_UserAction">
+			<result name="success" type="dispatcher">inc_user_list.jsp</result>
+		</action>
+	</package>
+</struts>

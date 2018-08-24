@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.project">
+	<class name="M_Milestone" table="M_Milestone" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="milestoneId" column="MilestoneId">
+			<generator class="native"/>
+		</id> 
+		
+<!--		<property name="prjId" column="PrjId"/>-->
+		<many-to-one name="prj" class="com.leonyip.budget.domain.project.M_Project" >
+			<column name="PrjId"></column>
+		</many-to-one>
+		
+		<property name="prjName" column="PrjName"/>
+		
+		<property name="milestoneName" column="MilestoneName"/>
+		
+		<property name="beginDatePlan" column="BeginDatePlan"/>
+		
+		<property name="endDatePlan" column="EndDatePlan"/>
+		
+		<property name="beginDateFact" column="BeginDateFact"/>
+		
+		<property name="endDateFact" column="EndDateFact"/>
+		
+		<property name="pricePlan" column="PricePlan"/>
+		
+		<property name="priceFact" column="PriceFact"/>
+		
+		<property name="milestoneDesc" column="MilestoneDesc"/>
+		
+		<property name="modifyDesc" column="ModifyDesc"/>
+		
+		<property name="priceRatePlan" column="priceRatePlan"/>
+		
+		<property name="priceRateFact" column="priceRateFact"/>
+		
+		<bag name="detailList" inverse="true" cascade="delete" order-by="DetailId">
+			<key column="MilestoneId"/>
+			<one-to-many class="M_MilestoneDetail"/>
+		</bag>
+		
+		<bag name="detailFactList" inverse="true" cascade="delete" order-by="DetailId">
+			<key column="MilestoneId"/>
+			<one-to-many class="M_MilestoneDetailFact"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>
+

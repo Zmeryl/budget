@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- dao -->
+	<bean name="departmentDAO" class="com.leonyip.budget.dao.department.B_DepartmentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="deptRoleDAO" class="com.leonyip.budget.dao.department.B_DeptRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>	
+	
+	<!-- service -->
+	<bean name="departmentService" class="com.leonyip.budget.service.department.B_DepartmentService">
+		<property name="departmentDAO">
+			<ref bean="departmentDAO"/>
+		</property>
+	</bean>
+	
+	<bean name="deptRoleService" class="com.leonyip.budget.service.department.B_DeptRoleService">
+		<property name="deptRoleDAO">
+			<ref bean="deptRoleDAO"/>
+		</property>
+	</bean>
+	
+	<!-- action -->
+  	<bean id="departmentAction" class="com.leonyip.budget.web.action.department.B_DepartmentAction" scope="prototype">
+		<property name="departmentService" ref="departmentService"/>
+	</bean>
+	
+  	<bean id="deptRoleAction" class="com.leonyip.budget.web.action.department.B_DeptRoleAction" scope="prototype">
+		<property name="deptRoleService" ref="deptRoleService"/>
+	</bean>	  
+</beans>

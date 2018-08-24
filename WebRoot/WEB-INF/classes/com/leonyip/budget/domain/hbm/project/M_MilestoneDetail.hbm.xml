@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.project">
+	<class name="M_MilestoneDetail" table="M_MilestoneDetail" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="detailId" column="DetailId">
+			<generator class="native"/>
+		</id> 
+		
+<!--		<property name="milestoneId" column="MilestoneId"/>-->
+		<many-to-one name="milestone" class="com.leonyip.budget.domain.project.M_Milestone" >
+			<column name="MilestoneId"></column>
+		</many-to-one>
+		
+		<property name="resId" column="ResId"/>
+		
+		<property name="resName" column="ResName"/>
+		
+		<property name="resNum" column="ResNum"/>
+		
+		<property name="beginDate" column="BeginDate"/>
+		
+		<property name="endDate" column="EndDate"/>
+		
+		<property name="useRate" column="UseRate"/>
+		
+		<property name="price" column="Price"/>
+		
+		<property name="resType" column="ResType"/>
+		
+		<property name="priceRate" column="PriceRate" />
+		
+	</class>
+</hibernate-mapping>
+

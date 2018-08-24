@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.action.extension" value="jhtml"/>
+	<package name="struts2" extends="struts-default">
+  		<global-results>
+			<result name="error_404" type="redirect">/error_404.jsp</result>
+			<result name="error_500" type="redirect">/error_500.jsp</result>
+			<!--<result name="timeout" type="redirect">/timeout.jsp</result>-->
+			<result name="failture" type="redirect">/error_500.jsp</result>
+			<result name="timeout" type="dispatcher">/msg/timeout.jsp</result>
+		</global-results>
+	</package>
+	<include file="struts2/struts-department.xml" />
+	<include file="struts2/struts-user.xml"></include>
+	<include file="struts2/struts-function.xml" />
+	<include file="struts2/struts-catalog.xml" />
+	<include file="struts2/struts-project.xml" />
+	<include file="struts2/struts-msg.xml" />
+</struts>

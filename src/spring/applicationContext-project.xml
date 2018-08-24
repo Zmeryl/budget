@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<!-- dao -->
+	<bean name="milestoneDAO" class="com.leonyip.budget.dao.project.M_MilestoneDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="milestoneDetailDAO" class="com.leonyip.budget.dao.project.M_MilestoneDetailDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="milestoneDetailFactDAO" class="com.leonyip.budget.dao.project.M_MilestoneDetailFactDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean name="projectDAO" class="com.leonyip.budget.dao.project.M_ProjectDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+		
+	<!-- service -->
+	<bean name="milestoneService" class="com.leonyip.budget.service.project.M_MilestoneService">
+		<property name="milestoneDAO" ref="milestoneDAO"/>
+	</bean>
+	
+	<bean name="milestoneDetailService" class="com.leonyip.budget.service.project.M_MilestoneDetailService">
+		<property name="milestoneDetailDAO" ref="milestoneDetailDAO"/>
+	</bean>
+	
+	<bean name="milestoneDetailFactService" class="com.leonyip.budget.service.project.M_MilestoneDetailFactService">
+		<property name="milestoneDetailFactDAO" ref="milestoneDetailFactDAO"/>
+	</bean>
+	
+	<bean name="projectService" class="com.leonyip.budget.service.project.M_ProjectService">
+		<property name="projectDAO" ref="projectDAO"/>
+	</bean>		
+
+	
+	<!-- action -->
+  	<bean id="projectAction" class="com.leonyip.budget.web.action.project.M_ProjectAction" scope="prototype">
+		<property name="milestoneService" ref="milestoneService"/>
+		<property name="milestoneDetailService" ref="milestoneDetailService"/>
+		<property name="milestoneDetailFactService" ref="milestoneDetailFactService"/>
+		<property name="projectService" ref="projectService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceResService" ref="priceResService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+		<property name="departmentService" ref="departmentService"/>
+		<property name="userService" ref="userService"></property>
+	</bean>
+
+  	<bean id="milestoneAction" class="com.leonyip.budget.web.action.project.M_MilestoneAction" scope="prototype">
+		<property name="milestoneService" ref="milestoneService"/>
+		<property name="milestoneDetailService" ref="milestoneDetailService"/>
+		<property name="milestoneDetailFactService" ref="milestoneDetailFactService"/>
+		<property name="projectService" ref="projectService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceResService" ref="priceResService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+	</bean>
+
+  	<bean id="detailAction" class="com.leonyip.budget.web.action.project.M_MilestoneDetailAction" scope="prototype">
+		<property name="milestoneService" ref="milestoneService"/>
+		<property name="milestoneDetailService" ref="milestoneDetailService"/>
+		<property name="milestoneDetailFactService" ref="milestoneDetailFactService"/>
+		<property name="projectService" ref="projectService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceResService" ref="priceResService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+	</bean>	
+
+  	<bean id="detailFactAction" class="com.leonyip.budget.web.action.project.M_MilestoneDetailFactAction" scope="prototype">
+		<property name="milestoneService" ref="milestoneService"/>
+		<property name="milestoneDetailService" ref="milestoneDetailService"/>
+		<property name="milestoneDetailFactService" ref="milestoneDetailFactService"/>
+		<property name="projectService" ref="projectService"/>
+		<property name="priceHumanService" ref="priceHumanService"/>
+		<property name="priceResService" ref="priceResService"/>
+		<property name="priceOtherService" ref="priceOtherService"/>
+	</bean>
+</beans>

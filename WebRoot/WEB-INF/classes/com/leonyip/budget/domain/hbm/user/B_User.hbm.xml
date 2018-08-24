@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.user">
+	<class name="B_User" table="B_User" dynamic-insert="true" dynamic-update="true" >
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="userId" column="UserId">
+			<generator class="native"/>
+		</id> 
+		
+<!--		<property name="deptRoleId" column="DeptRoleId"/>-->
+		<many-to-one name="deptRole" class="com.leonyip.budget.domain.department.B_DeptRole">
+			<column name="DeptRoleId"></column>
+		</many-to-one>
+		
+		<property name="deptRoleName" column="DeptRoleName"/>
+		
+<!--		<property name="sysRoleId" column="SysRoleId"/>-->
+		<many-to-one name="sysRole" class="com.leonyip.budget.domain.function.S_SysRole">
+			<column name="SysRoleId"></column>
+		</many-to-one>
+		
+		<property name="sysRoleName" column="SysRoleName"/>
+		
+		<property name="loginName" column="LoginName"/>
+		
+		<property name="loginPwd" column="LoginPwd"/>
+		
+		<property name="status" column="Status"/>
+		
+		<property name="lastLoginTime" column="LastLoginTime"/>
+		
+		<property name="stopTime" column="StopTime"/>
+		
+		<property name="createDate" column="CreateDate"/>
+		
+		<property name="updateDate" column="UpdateDate"/>
+		
+		<bag name="userDetailList" inverse="true" lazy="false" cascade="delete" order-by="UserId" >
+			<key column="UserId"/>
+			<one-to-many class="B_UserDetail"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

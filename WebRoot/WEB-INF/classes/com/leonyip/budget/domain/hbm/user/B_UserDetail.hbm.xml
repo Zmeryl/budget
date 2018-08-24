@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.user">
+	<class name="B_UserDetail" table="B_UserDetail" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="userId" column="UserId">
+			<generator class="assigned"/>
+		</id> 
+		
+		<property name="realName" column="RealName"/>
+		
+		<property name="sex" column="Sex"/>
+		
+		<property name="joinTime" column="JoinTime"/>
+		
+		<property name="userType" column="UserType"/>
+		
+		<property name="userPrice" column="UserPrice"/>
+		
+		<property name="userDesc" column="UserDesc"/>
+		
+		<property name="userRate" column="UserRate"/>
+		
+		<property name="workStatus" column="WorkStatus"/>
+		
+	</class>
+</hibernate-mapping>

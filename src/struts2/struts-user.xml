@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" extends="struts-default" namespace="/user">
+		
+		<!-- user -->
+		<action name="userAction" class="userAction">
+			<result name="success" type="dispatcher">user_list.jsp</result>
+			<result name="showAddUserJSP" type="dispatcher">user_add.jsp</result>
+			<result name="addUser" type="redirectAction">userAction</result>
+			<result name="showEditUserJSP" type="dispatcher">user_edit.jsp</result>
+			<result name="updateUser" type="redirectAction">userAction</result>
+			<result name="deleteUser" type="redirectAction">userAction</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+			<result name="viewUser" type="dispatcher">user_view.jsp</result>
+		</action>
+
+		<!-- edit user detail -->
+		<action name="userDetailAction" class="userDetailAction" >
+			<result name="success" type="dispatcher">userDetail_edit.jsp</result>
+			<result name="updateUserDetail" type="dispatcher">closeEditUserDetail.jsp</result>
+		</action>
+		
+		<action name="loginController" class="loginController">
+			<result name="success" type="dispatcher">/index.jsp</result>
+			<result name="error_input" type="dispatcher">/login.jsp</result>
+		</action>
+		
+		<action name="userLogout" class="com.leonyip.budget.web.action.user.B_LoginControllerAction" method="logout">
+			<result name="success" type="redirect">/login.jsp</result>
+		</action>
+		
+		<action name="editUserPwdAction" class="com.leonyip.budget.web.action.user.B_EditUserPasswordAction">
+			<result name="success" type="dispatcher">/index.jsp</result>
+			<result name="showEditUserPasswordJSP" type="dispatcher">/user/password_edit.jsp</result>
+		</action>
+	</package>
+</struts>

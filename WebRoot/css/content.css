@@ -1,0 +1,188 @@
+@charset "utf-8";
+
+.button_01{ 
+			height:26px;
+			width:102px;
+			padding:2px 0 0 10px;
+			background:url(../images/logout_button.gif) no-repeat;
+			cursor:hand;
+			color:#fff;
+			border:0;
+			vertical-align:middle;
+			}
+.button_02{ 
+			height:20px;
+			width:26px;
+			padding:0;
+			background:url(../images/search.gif) no-repeat;
+			cursor:hand;
+			color:#fff;
+			border:0;
+			vertical-align:middle;
+			}
+
+.button_03{ 
+			height:19px;
+			padding:0;
+			background:url(../images/button_bg1.gif) repeat-x #8da4c7;;
+			cursor:hand;
+			color:#fff;
+			border:1px solid #0c2a51;
+			vertical-align:middle;
+			}
+.button_login{ 
+			width:75px;
+			height:31px;
+			padding:0;
+			background:url(../images/logo_btn.jpg) no-repeat;
+			cursor:hand;
+			color:#fff;
+			font-weight:bold;
+			border:0;
+			vertical-align:middle;
+			}
+			
+			
+
+.input_01{ 
+			height:20px;
+			padding:2px 2px;
+			border:1px solid #a1aebf;
+			background: url(../images/input_bg.gif) repeat-x #fff;
+			color:#31425e;
+			vertical-align:middle;
+			}
+.input_02{ 
+			width:40px;
+			height:20px;
+			padding:2px 2px;
+			border:1px solid #a1aebf;
+			background: url(../images/input_bg.gif) repeat-x #fff;
+			color:#31425e;
+			vertical-align:middle;
+			}
+			
+			
+.select_01{
+			vertical-align:middle;
+			}
+			
+
+.textarea_01{
+			width:500px;
+			height:100px;
+			border:1px solid #a1aebf;
+			background: url(../images/input_bg.gif) repeat-x #fff;
+			color:#31425e;
+			vertical-align:middle;
+			}
+			
+			
+			
+
+/* ============================ 未登陆 ================================ */
+div.login_layout{ width:900px; height:510px; margin:0 auto; padding:0; background:url(../images/login_bg.gif) right center no-repeat;}
+
+div.login_left{ width:534px; float:left; margin:0; padding:0;}
+div.login_left_t{ width:474px; height:240px; margin:0 0 10px 0; background:url(../images/login_left_img.jpg) right  bottom no-repeat;}
+div.login_left_i{ width:474px; height:153px; background:url(../images/login_left_img2.jpg) right no-repeat;}
+
+div.login_right{ float:left; margin:0; padding:0; padding:220px 0 0 40px;}
+/* ------ 登录表格------- */
+table.logintab{margin:0; padding:0; border:0; width:100%;}
+table.logintab td{padding:0; color:#4b5b6b; vertical-align:middle; height:30px;}
+table.logintab td a{color:#4b5b6b; text-decoration:none;}
+table.logintab td a:hover{color:#4b5b6b; text-decoration:underline;}
+table.logintab td a:visited{color:#4b5b6b; text-decoration:none;}
+table.logintab td.align-r{ text-align:right;}
+
+div.login_bottom{ width:900px; height:40px; margin:0 auto; padding:0; text-align:center; color:#5a626b;}
+div.login_bottom img{ border:0; vertical-align:middle;}
+/* ============================ 未登陆 End ================================ */
+
+
+
+/* -----------主导航------------ */
+div.menu{margin:0 0 0 7px; width:166px;}
+
+/* 选择前 */
+div.menu ul li{float:left; padding:10px 0 0 20px; margin:0 0 1px 0; width:146px; height:24px; white-space: nowrap; text-align:center; list-style:none; background:url(../images/menu_out.gif) no-repeat;}
+div.menu ul li.title{float:left; padding:8px 0 0 0; margin:0 0 1px 0; width:166px; height:26px; text-align:center; background:url(../images/menu_title.gif) no-repeat;}
+
+/* 选择后 */
+div.menu ul li.select{float:left; padding:9px 0 0 10px; margin:0 0 1px 0; width:156px; height:25px; font-weight:bold; background:url(../images/menu_select.gif) no-repeat; text-align:center;}
+div.menu ul li.select img{ vertical-align:middle; margin:0 8px 0 0;}
+
+/* 选择前 链接样式 */
+div.menu ul li a, div.menu ul li a:visited{font-size:12px;color:#fff;text-decoration:none; }
+div.menu ul li a:hover{ font-weight:bold; color:#fff;}
+
+/* 选择前 经过时 样式 */
+div.menu ul li:hover{ background:url(../images/menu_hover.gif) no-repeat; font-weight:bold;}
+div.menu ul li.select:hover{background:url(../images/menu_select.gif) no-repeat;}
+div.menu ul li.title:hover{background:url(../images/menu_title.gif) no-repeat;}
+
+/* 选择后 链接样式 */
+div.menu ul li.select a, div.menu ul li.select a:visited, div.menu ul li.select a:hover{color:#333;}
+/* -----------主导航 End ------------ */
+
+
+
+/* Title */
+div.black_t{ margin:0; padding:0; height:30px; background:url(../images/black_title_bg.gif) repeat-x;}
+div.black_t_l{ width:7px; height:30px; background:url(../images/black_title_l.gif) no-repeat; float:left;}
+div.black_t_f{ background:url(../images/arrow_01.gif) 20px 6px no-repeat ; font-size:14px; font-weight:bold; color:#fff; padding:7px 0 0 44px;}
+div.black_t_f img{ border:0; margin:0 10px 0 0;}
+
+
+/* TAB cont */
+div.tabcont{ margin:14px; padding:0;}
+
+
+
+/* ------ 列表表格------- */
+table.tablb{margin:0; padding:0; border-left:1px solid #cddeee; border-right:1px solid #cddeee; width:100%; background:#fff;}
+table.tablb tr.titlelb td{padding:3px 0 0 6px; color:#656668; text-align:left; border-top:1px solid #dae1e7; border-bottom:1px solid #cfcfcf; height:20px; background:url(../images/table_bg1.gif) repeat-x;}
+
+table.tablb tr.titlelb td.r-b{ border-right:1px solid #d0d0d0; border-left:1px solid #fff;}
+
+table.tablb td{border-top:1px solid #fff; padding:6px; color:#555; height:18px;line-height:18px; vertical-align:middle; border-bottom:1px solid #ededed;}
+
+table.tablb td a{color:#7a8dab; text-decoration:none;}
+table.tablb td a:hover{color:#7a8dab; text-decoration:underline;}
+table.tablb td.align-r{ text-align:right;}
+table.tablb td.align-t{ vertical-align:top;}
+table.tablb td.align-c{ text-align:center;}
+table.tablb td.color_01{ color:#3c4759;}
+table.tablb td.color_02{ color:#599a00;}
+table.tablb td.color_03{ color:#666;}
+
+table.tablb tr.white{  background:#fff;
+onmouseover:expression(onmouseover=function (){this.style.backgroundColor='#edf0f2'});
+onmouseout:expression(onmouseout=function (){this.style.backgroundColor='#ffffff'});
+}
+table.tablb tr.gray{background:#fafafa; 
+onmouseover:expression(onmouseover=function (){this.style.backgroundColor='#edf0f2'});
+onmouseout:expression(onmouseout=function (){this.style.backgroundColor='#fafafa'});
+}
+
+table.tablb tr.titletop td{padding:2px 0 0 6px; color:#656668; text-align:left; border-top:1px solid #cddeee; 
+border-bottom:1px solid #a2afc0; height:27px; background:url(../images/tabtitle_top.gif) repeat-x;}
+table.tablb tr.titletop td a{color:#1f1d20; text-decoration:none;}
+table.tablb tr.titletop td a:hover{color:#1f1d20; text-decoration:underline;}
+table.tablb tr.titletop td img{ vertical-align:middle; margin:0 4px 0 0;}
+/* ------ 列表表格 End ------- */
+
+/* ------ 项目列表表格------- */
+table.projectlb{margin:0; padding:0; border-left:1px solid #cddeee; border-right:1px solid #cddeee; width:100%; background:#f0f3f5;}
+table.projectlb tr.titlelb td{padding:3px 0 0 6px; color:#656668; text-align:left; border-top:1px solid #dae1e7; border-bottom:1px solid #cfcfcf; height:22px; background:url(../images/table_bg1.gif) repeat-x;}
+table.projectlb td{border-top:1px solid #fff; padding:6px; color:#555; height:22px;line-height:22px; vertical-align:middle; border-bottom:1px solid #e5e8ec; font-size:14px;}
+table.projectlb td.align-r{ text-align:right; font-weight:bold; color:#000;}
+table.projectlb td a{color:#7a8dab; font-size:14px; text-decoration:none;}
+table.projectlb td a:hover{color:#7a8dab; font-size:14px; text-decoration:underline;}
+/* ------ 项目列表表格 End ------- */
+
+
+/* Welcome */
+div.welcome{ margin:0 auto; width:407px;}
+div.welcome img{ border:0; margin-top:100px;}

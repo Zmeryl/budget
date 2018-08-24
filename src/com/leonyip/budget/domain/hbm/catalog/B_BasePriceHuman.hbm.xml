@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.catalog">
+	<class name="B_BasePriceHuman" table="B_BasePriceHuman" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="priceId" column="PriceId">
+			<generator class="native"/>
+		</id> 
+		
+<!--		<property name="cataId" column="CataId"/>-->
+		<many-to-one name="catalog" class="com.leonyip.budget.domain.catalog.B_BaseCatalog" >
+			<column name="CataId"></column>
+		</many-to-one>
+		
+		<property name="cataName" column="CataName"/>
+		
+<!--		<property name="deptRoleId" column="DeptRoleId"/>-->
+		<many-to-one name="deptRole" class="com.leonyip.budget.domain.department.B_DeptRole" >
+			<column name="DeptRoleId"></column>
+		</many-to-one>
+		
+		<property name="roleName" column="RoleName"/>
+		
+		<property name="priceType" column="PriceType"/>
+		
+		<property name="price" column="Price"/>
+		
+		<property name="publicRate" column="PublicRate"/>
+		
+		<property name="info" column="Info"/>
+		
+		<many-to-one name="user" class="com.leonyip.budget.domain.user.B_User">
+			<column name="UserId"></column>
+		</many-to-one>
+		
+		<property name="userName" column="UserName"/>
+	</class>
+</hibernate-mapping>

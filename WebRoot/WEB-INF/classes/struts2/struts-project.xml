@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="project" extends="struts-default" namespace="/project">
+		
+		<!-- project -->
+		<action name="projectAction" class="projectAction">
+			<result name="success" type="dispatcher">project_list.jsp</result>
+			<result name="showAddProjectJSP" type="dispatcher">project_add.jsp</result>
+			<result name="addProject" type="chain">projectAction</result>
+			<result name="showEditProjectJSP" type="dispatcher">project_edit.jsp</result>
+			<result name="updateProject" type="chain">projectAction</result>
+			<result name="deleteProject" type="chain">projectAction</result>
+			<result name="error_date" type="chain">showErrorMsgPage</result>
+			<result name="prjReport" type="dispatcher">prj_report.jsp</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+		</action>
+		
+		<!-- show add manager page -->
+		<action name="showManagerAddJSP" class="com.leonyip.budget.web.action.user.B_UserAction">
+			<result name="success" type="dispatcher">inc/manager_add.jsp</result>
+		</action>
+		
+		<!-- milestone -->
+		<action name="milestoneAction" class="com.leonyip.budget.web.action.project.M_MilestoneAction">
+			<result name="success" type="dispatcher">milestone_list.jsp</result>
+			<result name="showAddMilestoneJSP" type="dispatcher">milestone_add.jsp</result>
+			<result name="addMilestone" type="chain">milestoneAction</result>
+			<result name="showEditMilestoneJSP" type="dispatcher">milestone_edit.jsp</result>
+			<result name="updateMilestone" type="chain">milestoneAction</result>
+			<result name="deleteMilestone" type="chain">milestoneAction</result>
+			<result name="error_date" type="chain">showErrorMsgPage</result>
+			<result name="error_function" type="dispatcher">/msg/message.jsp</result>
+		</action>
+		
+		<!-- detail plan -->
+		<action name="detailAction" class="com.leonyip.budget.web.action.project.M_MilestoneDetailAction">
+			<result name="success" type="dispatcher">detail_list.jsp</result>
+			<result name="showAddDetailJSP" type="dispatcher">detail_add.jsp</result>
+			<result name="addDetail" type="chain">addDetailFact</result>
+			<result name="showEditDetailJSP" type="dispatcher">detail_edit.jsp</result>
+			<result name="updateDetail" type="chain">updateDetailFactAuto</result>
+			<result name="deleteDetail" type="chain">updateMilestonePrice</result>
+			<result name="error_addRepeat" type="chain">showErrorMsgPage</result>
+			<result name="error_updateRepeat" type="chain">showErrorMsgPage</result>
+			<result name="error_date" type="chain">showErrorMsgPage</result>
+		</action>
+		
+		<!-- auto add & update detail fact -->
+		<action name="addDetailFact" class="com.leonyip.budget.web.action.project.M_MilestoneDetailFactAction" method="addDetailFact">
+			<result name="addDetailFact" type="chain">updateMilestonePrice</result>
+		</action>
+		<action name="updateDetailFactAuto" class="com.leonyip.budget.web.action.project.M_MilestoneDetailFactAction" method="updateDetailFactAuto">
+			<result name="updateDetailFactAuto" type="chain">updateMilestonePrice</result>
+		</action>
+		
+		<!-- update milestone price -->
+		<action name="updateMilestonePrice" class="com.leonyip.budget.web.action.project.M_MilestoneCalculatorAction" >
+			<result name="success" type="chain">isShowAddDetailJSP</result>
+		</action>
+		
+		<!-- page turn -->
+		<action name="isShowAddDetailJSP" class="com.leonyip.budget.web.action.project.M_PageTurnAction" >
+			<result name="success" type="chain">detailAction</result>
+			<result name="addDetail" type="chain">detailAction</result>
+			<result name="addDetailMore" type="chain">showAddDetailJSP</result>
+		</action>
+		
+		<action name="showAddDetailJSP" class="com.leonyip.budget.web.action.project.M_MilestoneDetailAction" method="showAddDetailJSP">
+			<result name="showAddDetailJSP" type="dispatcher">detail_add.jsp</result>
+		</action>
+		
+		<!-- detail fact -->
+		<action name="detailFactAction" class="com.leonyip.budget.web.action.project.M_MilestoneDetailFactAction" >
+			<result name="showEditDetailFactJSP" type="dispatcher">detail_fact_edit.jsp</result>
+			<result name="updateDetailFact" type="chain">dateFactAction</result>
+			<result name="error_updateRepeat" type="chain">showErrorMsgPage</result>
+			<result name="error_date" type="chain">showErrorMsgPage</result>
+		</action>
+		<action name="dateFactAction" class="com.leonyip.budget.web.action.project.M_DateFactAction" >
+			<result name="success" type="chain">updateMilestonePrice</result>
+		</action>
+		
+		<!-- show add res page -->
+		<action name="showHumanAddJSP" class="com.leonyip.budget.web.action.catalog.B_BasePriceHumanAction">
+			<result name="success" type="dispatcher">inc/humanPrice_list.jsp</result>
+		</action>
+		<action name="showResAddJSP" class="com.leonyip.budget.web.action.catalog.B_BasePriceResAction">
+			<result name="success" type="dispatcher">inc/resPrice_list.jsp</result>
+		</action>
+		<action name="showOtherAddJSP" class="com.leonyip.budget.web.action.catalog.B_BasePriceOtherAction">
+			<result name="success" type="dispatcher">inc/otherPrice_list.jsp</result>
+		</action>
+		
+		<!-- message page -->
+		<action name="showErrorMsgPage" class="com.leonyip.budget.web.action.msg.M_ShowMessagePageAction" >
+			<result name="success" type="dispatcher">../msg/message.jsp</result>
+		</action>
+		
+		<!-- 为项目管理者选择页面使用 -->
+		<action name="userAction" class="com.leonyip.budget.web.action.user.B_UserAction">
+			<result name="success" type="dispatcher">inc/manager_add.jsp</result>
+		</action>
+	</package>
+</struts>

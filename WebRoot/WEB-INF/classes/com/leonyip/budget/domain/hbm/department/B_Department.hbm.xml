@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--hbm 映射关系配置文件,如果使用annotation模式配置映射关系的话此文件已不需要-->
+<hibernate-mapping package="com.leonyip.budget.domain.department">
+	<class name="B_Department" table="B_Department" dynamic-insert="true" dynamic-update="true">
+		<cache usage="nonstrict-read-write"/>
+		
+		<id name="deptId" column="DeptId">
+			<generator class="native"/>
+		</id> 
+		
+		<property name="superId" column="SuperId"/>
+		
+		<property name="deptName" column="DeptName"/>
+		
+		<property name="deptInfo" column="DeptInfo"/>
+		
+		<bag name="deptRole" inverse="true" cascade="delete" order-by="DeptRoleId">
+			<key column="DeptId"/>
+			<one-to-many class="B_DeptRole"/>
+		</bag>
+		
+		<bag name="projectList" inverse="true" cascade="delete" order-by="PrjId">
+			<key column="DeptId"/>
+			<one-to-many class="com.leonyip.budget.domain.project.M_Project"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>
+
